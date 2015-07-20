@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="jogging">
+  <head>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  </head>
+  <body>
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="app.js"></script>
+    <!-- jQuery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Content -->
+    <div class="container">
+      <h1>Jogging</h1>
+      <div ng-controller="JogListController as jogList">
+        <h4>{{jogList.jogs.length}} jogs</h4>
+        <ul class="list-group">
+          <li ng-repeat="jog in jogList.jogs" class="list-group-item">
+            <span>{{jog.date.toLocaleString()}} - {{jog.meters}} meters in {{jog.seconds}} seconds</span>
+          </li>
+        </ul>
+        <h4>Add a new jog</h4>
+        <form ng-submit="jogList.addJog()" class="form">
+          <div class="form-group">
+            <input type="text" ng-model="jogList.jogDate" size="50" maxlength=50 placeholder="Date" class="form-control"/>
+            <input type="text" ng-model="jogList.jogMeters" size="15" maxlength=20 placeholder="Meters" class="form-control"/>
+            <input type="text" ng-model="jogList.jogSeconds" size="15" maxlength=20 placeholder="Seconds" class="form-control"/>
+            <input type="submit" value="Add Jog" class="btn btn-primary"/>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
